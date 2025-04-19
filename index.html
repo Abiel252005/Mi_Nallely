@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Para mi amor, Nallely</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #2b1a3b, #1a0f2a);
+      font-family: 'Dancing Script', cursive;
+      overflow: hidden;
+      padding: 20px;
+      position: relative;
+    }
+    .main-title {
+  color: #e6d3f9;
+  font-size: 2.5em;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(230, 211, 249, 0.9);
+  margin: 20px 0 10px;
+  font-family: 'Dancing Script', cursive;
+  animation: fadeInTitle 3s ease-in-out;
+}
+
+
+    /* Subtle background animation */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(230, 211, 249, 0.2), transparent);
+      opacity: 0.3;
+      animation: pulse 15s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 0.3; }
+    }
+
+    .vinyl-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin-top: 20px;
+      transition: transform 2s ease;
+      filter: drop-shadow(0 0 20px rgba(177, 156, 217, 0.7));
+    }
+
+    .vinyl {
+      width: 100%;
+      height: 100%;
+      background: url('image.png') center/cover;
+      border-radius: 50%;
+      animation: spin 4s linear infinite;
+      position: relative;
+      box-shadow: 0 0 30px rgba(230, 211, 249, 0.5);
+    }
+
+    .vinyl::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      background: #e6d3f9;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgba(230, 211, 249, 0.8);
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .text-container {
+      text-align: center;
+      color: #e6d3f9;
+      max-width: 80%;
+      margin-bottom: 200px;
+      display: none;
+      position: relative;
+      transition: transform 2s ease;
+    }
+
+    .text-container p {
+      font-size: 1.8em;
+      margin: 15px 0;
+      text-shadow: 0 0 15px rgba(230, 211, 249, 0.9);
+      opacity: 0;
+      animation: fadeInOut 3s ease-in forwards;
+    }
+
+    @keyframes fadeInOut {
+      0%   { opacity: 0; transform: translateY(20px); }
+      10%  { opacity: 1; transform: translateY(0); }
+      90%  { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-20px); }
+    }
+
+    .final-message {
+      display: none;
+      font-size: 1.4em;
+      text-align: left;
+      color: #e6d3f9;
+      text-shadow: 0 0 10px rgba(230, 211, 249, 0.8);
+      position: absolute;
+      right: 20px;
+      width: 40%;
+      max-width: 400px;
+      top: 30%; /* Moved higher */
+      transform: translateY(-30%);
+      max-height: 60vh;
+      overflow-y: auto;
+      padding: 20px;
+      background: rgba(43, 26, 59, 0.5);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(230, 211, 249, 0.3);
+      margin-right: 300px;
+      margin-top: 40px;
+    }
+
+    .final-message p {
+      margin: 10px 0;
+    }
+
+    .play-button {
+      padding: 15px 30px;
+      font-size: 1.4em;
+      background: #b19cd9;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 5px 15px rgba(177, 156, 217, 0.7);
+      margin-bottom: 200px;
+      animation: buttonPulse 2s infinite;
+    }
+
+    .play-button:hover {
+      background: #9575cd;
+      transform: scale(1.05);
+    }
+
+    @keyframes buttonPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+  .main-title {
+    font-size: 1.8em;
+    margin-top: 10px;
+  }
+
+  .vinyl-container {
+    width: 180px;
+    height: 180px;
+    margin-top: 10px;
+  }
+
+  .text-container p {
+    font-size: 1.2em;
+    padding: 0 10px;
+  }
+
+  .final-message {
+    font-size: 1em;
+    width: 90%;
+    right: 5%;
+    left: 5%;
+    top: 20%;
+    transform: translateY(-20%);
+    margin: 0 auto;
+    padding: 15px;
+    max-height: 50vh;
+    margin-right: 0;
+  }
+
+  .play-button {
+    font-size: 1em;
+    padding: 10px 20px;
+    margin-bottom: 100px;
+  }
+
+  body {
+    padding: 10px;
+  }
+}
+
+  </style>
+</head>
+<body>
+    <h1 class="main-title">Para mi hermosa Nalle</h1>
+  <div class="vinyl-container" id="vinylContainer">
+    <div class="vinyl" id="vinyl"></div>
+  </div>
+
+  <button class="play-button" onclick="playSong()">Toca para mi amor, Nallely</button>
+
+  <div class="text-container" id="textContainer"></div>
+
+  <div class="final-message" id="finalMessage"></div>
+
+  <audio id="song" src="Bertha_Tillman_-_Oh_My_Angel_@BaseNaija.mp3" loop></audio>
+
+  <script>
+    const audio = document.getElementById('song');
+    const vinyl = document.getElementById('vinyl');
+    const vinylContainer = document.getElementById('vinylContainer');
+    const textContainer = document.getElementById('textContainer');
+    const finalMessage = document.getElementById('finalMessage');
+    const button = document.querySelector('.play-button');
+
+    const paragraphs = [
+      "Nallely, desde que llegaste a mi vida, todo tiene más color y más sentido.",
+      "Tu risa es mi melodía favorita, y tu voz la paz que mi alma siempre buscó.",
+      "Cada momento contigo es un tesoro que guardo con el corazón latiendo fuerte.",
+      "Tus abrazos son mi refugio, y tus ojos mi lugar favorito para perderme.",
+      "Gracias por enseñarme lo que es el amor verdadero con cada gesto y palabra.",
+      "Prometo cuidarte, amarte y acompañarte hasta el último de mis días.",
+      "Eres mi sol en los días nublados y mi calma cuando todo es caos.",
+      "Te amo más de lo que las palabras pueden expresar, y cada día te elijo otra vez.",
+      "Nallely, todo lo que has leído son solo palabras... pero vienen de un corazón que late solo por ti. Te amo infinitamente."
+    ];
+
+    function playSong() {
+      audio.play().catch(error => console.error("Error al reproducir la canción:", error));
+      vinyl.style.animationPlayState = 'running';
+      button.style.display = 'none';
+      textContainer.style.display = 'block';
+
+      showParagraphs();
+    }
+
+    async function showParagraphs() {
+      for (let i = 0; i < paragraphs.length - 1; i++) { // Exclude the final message for now
+        const p = document.createElement('p');
+        p.textContent = paragraphs[i];
+        p.style.animationDelay = '0s';
+        textContainer.appendChild(p);
+        await delay(4500); // Tiempo que dura cada animación (3s + margen)
+        p.remove(); // Elimina después de animarse
+      }
+
+      // Al finalizar, mover el vinilo a la izquierda y mostrar todos los párrafos
+      vinylContainer.style.transform = window.innerWidth < 768 ? 'translate(-5vw, -25vh)' : 'translate(-15vw, -35vh)';
+      textContainer.style.display = 'none';
+      finalMessage.style.display = 'block';
+
+      // Agregar todos los párrafos al mensaje final
+      paragraphs.forEach(text => {
+        const p = document.createElement('p');
+        p.textContent = text;
+        finalMessage.appendChild(p);
+      });
+    }
+
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    window.onload = () => {
+      vinyl.style.animationPlayState = 'paused';
+      textContainer.style.display = 'none';
+      finalMessage.style.display = 'none';
+    };
+  </script>
+</body>
+</html>
